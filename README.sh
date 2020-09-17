@@ -1,4 +1,4 @@
-
+#! /usr/bin/bash
 
 GENOME_TARGET="U00096.3"
 
@@ -25,6 +25,7 @@ $GENOME_TARGET <(cat ../Reads/ERR2249109.fastq ../Reads/ERR2249110.fastq) |
 samtools view -S -b > ${GENOME_TARGET}_aln.bam
 
 samtools sort ${GENOME_TARGET}_aln.bam > ${GENOME_TARGET}_aln.bam.sort
+
 mv ${GENOME_TARGET}_aln.bam.sort ${GENOME_TARGET}_aln.bam
 
 bam2wig.pl  --in ${GENOME_TARGET}_aln.bam --start --rpm --out ${GENOME_TARGET}_aln.wig
