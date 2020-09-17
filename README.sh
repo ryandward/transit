@@ -1,4 +1,4 @@
-#! /usr/bin/bash
+#!/usr/bin/env bash
 
 GENOME_TARGET="U00096.3"
 
@@ -34,3 +34,5 @@ bam2wig.pl  --in ${GENOME_TARGET}_aln.bam --start --rpm --out ${GENOME_TARGET}_a
 awk '$7=="CDS" {print $1,$2,$3,$6,($3-$2)/3,$7,$8,$5,$4}' > ${GENOME_TARGET}_aln.wig
 
 transit tn5gaps -m2 -r mean ${GENOME_TARGET}_aln.wig ${GENOME_TARGET}.prot_table ${GENOME_TARGET}_transit_tn5gaps.tsv
+
+conda deactivate
