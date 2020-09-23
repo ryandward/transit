@@ -1,5 +1,7 @@
 #!/usr/bin/gawk -E
-#Sept 20, 2020 - Ryan D. Ward
+#Written by Ryan D. Ward 
+#ryandward [_at_] gmail [_dot_] com
+#September 20, 2020
 
 BEGIN{
   FS="\t";
