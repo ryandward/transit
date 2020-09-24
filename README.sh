@@ -43,7 +43,6 @@ efetch -db nuccore -format ft -id $GENOME_TARGET > ${GENOME_TARGET}.tbl &&
       echo "Emtpy file: ${GENOME_TARGET}.tbl, try efetch step again."
 
 # build a bowtie index
-bowtie-build -o1 ${GENOME_TARGET}.fasta $GENOME_TARGET
 
 #########################             ################################
 #########################GETTING FILES################################
@@ -52,6 +51,7 @@ bowtie-build -o1 ${GENOME_TARGET}.fasta $GENOME_TARGET
 
 ###############################TRANSIT################################
 ###############################       ################################
+bowtie-build -o1 ${GENOME_TARGET}.fasta $GENOME_TARGET
 # now, find essential genes using transit
 
 # use bowtie to align the reads to the genome
