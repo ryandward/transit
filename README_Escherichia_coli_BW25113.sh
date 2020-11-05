@@ -1,3 +1,4 @@
+#!/bin/bash
 ORGANISM="Escherichia_coli_BW25113"
 GENOME_TARGET=(CP009273.1) #https://www.ncbi.nlm.nih.gov/nuccore/CP009273.1
 READ_LIST="References/Goodall/SraRunTable.txt" #https://www.ebi.ac.uk/ena/browser/view/PRJEB24436
@@ -5,7 +6,7 @@ READ_FOLDER="References/Goodall/Reads" #should be empty
 MIN_READ_LENGTH="25"
 TBL2BED="./tbl2bed.awk"
 SELE="sele/sele"
-SRA_QUERY='-q -c Run -w "TITLE~LB"'
+SRA_QUERY="TITLE~LB"
 ################################################################################
 # steps that only need to be set up once
 ################################################################################
@@ -30,7 +31,7 @@ mkdir $READ_FOLDER
 conda activate transit
 
 # get the reads
-prefetch $(csv2tsv $READ_LIST | $SELE -q -c Run -w "TITLE~LB") --output-directory $READ_FOLDER
+prefetch $(csv2tsv $READ_LIST | $SELE -q -c Run -w $SRA_QUERY) --output-directory $READ_FOLDER
 
 # dump the fastq
 for i in $READ_FOLDER/*; do

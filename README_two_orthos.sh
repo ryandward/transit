@@ -1,3 +1,4 @@
+#!/bin/bash
 ORGANISM_1="Escherichia_coli_BW25113"
 ORGANISM_2="Acinetobacter_baumannii_ATCC_17978"
 
@@ -127,7 +128,7 @@ BACKGROUND="$(sele -q ${ORGANISM_1}_coding.bed | wc -l | cut -d' ' -f1)"
 
 ~/Git/geneSCF/geneSCF-master-v1.1-p2/geneSCF-master-source-v1.1-p2/geneSCF \
   -m=normal \
-  -i=${ORGANISM_1}_${ORGANISM_2}_diff_ess.tsv.tsv \
+  -i=${ORGANISM_1}_${ORGANISM_2}_diff_ess.tsv \
   -t=sym \
   -o=./ \
   -db=GO_all \
@@ -145,6 +146,23 @@ BACKGROUND="$(sele -q ${ORGANISM_2}_coding.bed | wc -l | cut -d' ' -f1)"
 ~/Git/geneSCF/geneSCF-master-v1.1-p2/geneSCF-master-source-v1.1-p2/geneSCF \
   -m=normal \
   -i=${ORGANISM_1}_${ORGANISM_2}_diff_noness.tsv \
+  -t=sym \
+  -o=./ \
+  -db=GO_all \
+  -p=yes \
+  -bg=$BACKGROUND \
+  -org=ecocyc
+
+################################################################################
+
+sele -q -c Symbol -w "Essential_1==Essential,Essential_2==Essential" ${ORGANISM_1}_${ORGANISM_2}_essentiality.tsv \
+  > ${ORGANISM_1}_${ORGANISM_2}_both_ess.tsv
+
+BACKGROUND="$(sele -q ${ORGANISM_2}_coding.bed | wc -l | cut -d' ' -f1)"
+
+~/Git/geneSCF/geneSCF-master-v1.1-p2/geneSCF-master-source-v1.1-p2/geneSCF \
+  -m=normal \
+  -i=${ORGANISM_1}_${ORGANISM_2}_both_ess.tsv \
   -t=sym \
   -o=./ \
   -db=GO_all \
