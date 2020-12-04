@@ -1,7 +1,7 @@
 #!/bin/bash
 ORGANISM="Acinetobacter_baumannii_ATCC_17978"
 GENOME_TARGET=(CP053098.1 CP053099.1 CP053100.1) #https://www.ncbi.nlm.nih.gov/assembly/GCF_013372085.1
-READ_LIST="References/Geisinger/SraRunTable.txt" #https://www.ebi.ac.uk/ena/browser/view/PRJEB24436
+READ_LIST="References/Geisinger/SraRunTable.txt" #https://www.ncbi.nlm.nih.gov/Traces/study/?acc=PRJNA485590&o=acc_s%3Aa
 READ_FOLDER="References/Geisinger/Reads" #should be empty
 MIN_READ_LENGTH="25"
 TBL2BED="./tbl2bed.awk"
